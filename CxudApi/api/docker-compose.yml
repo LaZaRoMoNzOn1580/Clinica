@@ -1,0 +1,24 @@
+version: '3.7'
+services:
+  app:
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      DATABASE_URL: jdbc:mysql://mysqlserv:3306/clinica
+      DATABASE_USER: root
+      DATABASE_PASSWORD: reto
+    depends_on:
+      - mysqlserv
+
+  mysqlserv:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: reto
+    ports:
+      - "3306:3306"
+    volumes:
+      - mySQLvolume:/var/lib/mysql
+
+volumes:
+  mySQLvolume:

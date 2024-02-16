@@ -1,0 +1,16 @@
+# Utilizar una imagen base de Java 21
+FROM openjdk:21
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copiar el archivo JAR de tu aplicación en el contenedor
+# Asegúrate de construir tu aplicación con Maven antes de construir la imagen Docker
+COPY target/api-0.0.1-SNAPSHOT.jar api-0.0.1-SNAPSHOT.jar
+
+# Exponer el puerto 8081 que tu aplicación utiliza
+EXPOSE 8082
+
+
+# Ejecutar la aplicación
+CMD ["java", "-jar", "api-0.0.1-SNAPSHOT.jar"]
